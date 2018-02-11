@@ -6,9 +6,7 @@ module Makara
     end
 
     initializer "makara.initialize_logger" do |app|
-      ActiveRecord::LogSubscriber.log_subscribers.each do |subscriber|
-        subscriber.extend ::Makara::Logging::Subscriber
-      end
+      ActiveRecord::LogSubscriber.prepend ::Makara::Logging::Subscriber
     end
 
   end
